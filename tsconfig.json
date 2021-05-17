@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015"],
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "strict": true,
+    "target": "es5",
+    "noImplicitAny": true
+  },
+  "include": ["src"]
+}
