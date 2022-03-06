@@ -1,4 +1,4 @@
-import { CsvMaker } from '../src/excel'
+import { CsvMaker } from '../src'
 
 describe('Test CsvMaker', () => {
   it(`makeContent`, async () => {
