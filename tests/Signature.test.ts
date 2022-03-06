@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { DiffMapper, injectUrlQueryParams, Signature } from '../src'
+import { DiffMapper, injectUrlQueryParams, Signature } from '../src/common'
 import * as urlHelper from 'url'
 
 describe('Test MySignature', () => {

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "lib": ["es2015"],
     "importHelpers": true,
     "noEmitHelpers": true,
     "module": "commonjs",

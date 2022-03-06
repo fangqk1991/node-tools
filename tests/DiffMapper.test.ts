@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { DiffMapper, DiffType } from '../src'
+import { DiffMapper, DiffType } from '../src/common'
 
 const fromObj = {
   unchangedStr: '123',

@@ -36,7 +36,7 @@ const isValue = function (x: any) {
   return !isObject(x) && !isArray(x)
 }
 
-const compareValues = function(value1: any, value2: any) {
+const compareValues = function (value1: any, value2: any) {
   if (value1 === value2) {
     return DiffType.Unchanged
   }
@@ -95,7 +95,7 @@ const endItem = (items: any[]) => {
 export class DiffMapper {
   private readonly fromObj: {}
   private readonly toObj: {}
-  private readonly rawSpecialKeychains: (any[])[]
+  private readonly rawSpecialKeychains: any[][]
 
   public constructor(fromObj: {}, toObj: {}) {
     this.fromObj = fromObj
@@ -109,7 +109,7 @@ export class DiffMapper {
 
   private _compare(obj1: any, obj2: any) {
     if (isFunction(obj1) || isFunction(obj2)) {
-      throw 'Invalid argument. Function given, object expected.';
+      throw 'Invalid argument. Function given, object expected.'
     }
     if (isValue(obj1) || isValue(obj2)) {
       return {
@@ -119,18 +119,18 @@ export class DiffMapper {
       }
     }
 
-    let diff: any = {};
+    let diff: any = {}
     for (let key in obj1) {
       if (isFunction(obj1[key])) {
-        continue;
+        continue
       }
 
-      let value2 = undefined;
+      let value2 = undefined
       if (obj2[key] !== undefined) {
-        value2 = obj2[key];
+        value2 = obj2[key]
       }
 
-      diff[key] = this._compare(obj1[key], value2);
+      diff[key] = this._compare(obj1[key], value2)
     }
     for (let key in obj2) {
       if (isFunction(obj2[key]) || diff[key] !== undefined) {
@@ -245,10 +245,12 @@ export class DiffMapper {
     const data = this.buildCompareMap()
 
     const leaves: DiffEntity[] = []
-    let curItems: { keychain: string[]; node: any }[] = [{
-      keychain: [],
-      node: data,
-    }]
+    let curItems: { keychain: string[]; node: any }[] = [
+      {
+        keychain: [],
+        node: data,
+      },
+    ]
     while (curItems.length > 0) {
       const newItems: any[] = []
       curItems.forEach((item) => {
