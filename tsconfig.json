@@ -3,7 +3,7 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "sourceMap": true,
     "moduleResolution": "node",
     "outDir": "lib",
@@ -11,6 +11,9 @@
     "target": "es6",
     "noImplicitAny": true,
     "skipLibCheck": true,
+    "downlevelIteration": true,
+    "suppressExcessPropertyErrors": true,
+    "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
