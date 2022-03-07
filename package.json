@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/tools",
-  "version": "1.6.0",
+  "version": "1.7.2",
   "description": "Some tools.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -35,7 +35,11 @@
     "log4js": "^6.1.0",
     "shelljs": "^0.8.5",
     "@types/shelljs": "^0.8.11",
-    "aws-sdk": "^2.1087.0"
+    "aws-sdk": "^2.1087.0",
+    "file-type": "^12.4.0",
+    "read-chunk": "^3.2.0",
+    "spark-md5": "^3.0.2",
+    "@types/spark-md5": "^3.0.2"
   },
   "prettier": {
     "arrowParens": "always",
