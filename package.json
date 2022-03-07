@@ -32,7 +32,10 @@
     "fc-queue": "^0.4.0",
     "@fangcha/app-request": "^1.2.0",
     "@fangcha/logger": "^0.1.0",
-    "log4js": "^6.1.0"
+    "log4js": "^6.1.0",
+    "shelljs": "^0.8.5",
+    "@types/shelljs": "^0.8.11",
+    "aws-sdk": "^2.1087.0"
   },
   "prettier": {
     "arrowParens": "always",
