@@ -1,11 +1,11 @@
 import * as assert from 'assert'
 import * as fs from 'fs'
-import { DiffMapper } from '../src'
-import { TypicalExcel } from '../src/excel'
+import { DiffMapper } from '../../src'
+import { TypicalExcel } from '../../src/excel'
 
 describe('Test TypicalExcel', () => {
   it(`Test Write / Read`, async () => {
-    const filepath = `${__dirname}/../run.local/xx.xlsx`
+    const filepath = `${__dirname}/run.local/xx.xlsx`
 
     const columnKeys = ['id', 'name', 'date']
     const excel = new TypicalExcel(columnKeys)
@@ -20,7 +20,7 @@ describe('Test TypicalExcel', () => {
   })
 
   it(`Test Stream To File`, async () => {
-    const filepath = `${__dirname}/../run.local/xx.xlsx`
+    const filepath = `${__dirname}/run.local/xx.xlsx`
 
     const columnKeys = ['id', 'name', 'date']
     const excel = new TypicalExcel(columnKeys, {
@@ -32,7 +32,7 @@ describe('Test TypicalExcel', () => {
   })
 
   it(`Test Stream`, async () => {
-    const filepath = `${__dirname}/../run.local/xx.xlsx`
+    const filepath = `${__dirname}/run.local/xx.xlsx`
     const stream = fs.createWriteStream(filepath)
 
     const columnKeys = ['id', 'name', 'date']
@@ -42,11 +42,5 @@ describe('Test TypicalExcel', () => {
     excel.addRow({ id: 1, name: 'A', date: new Date('2018-01-01') })
     excel.addRow({ id: 2, name: 'B', date: new Date('2019-01-01') })
     await excel.commit()
-  })
-
-  it(`Check Xls`, async () => {
-    const filepath = `/Users/fang/Downloads/11112.xlsx`
-    const excel2 = await TypicalExcel.excelFromFile(filepath)
-    console.info(excel2.records())
   })
 })
