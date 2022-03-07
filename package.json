@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/tools",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "description": "Some tools.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -39,7 +39,9 @@
     "file-type": "^12.4.0",
     "read-chunk": "^3.2.0",
     "spark-md5": "^3.0.2",
-    "@types/spark-md5": "^3.0.2"
+    "@types/spark-md5": "^3.0.2",
+    "fc-sql": "^0.24.1",
+    "sequelize": "^5.21.2"
   },
   "prettier": {
     "arrowParens": "always",
