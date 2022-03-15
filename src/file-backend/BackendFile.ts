@@ -1,10 +1,15 @@
 import * as fileType from 'file-type'
 import * as readChunk from 'read-chunk'
+import * as fs from 'fs'
 
 export class BackendFile {
   public static getFileType(filePath: string) {
     const buffer = readChunk.sync(filePath, 0, fileType.minimumBytes)
     return fileType(buffer) as fileType.FileTypeResult
+  }
+
+  public static getFileSize(filePath: string) {
+    return fs.statSync(filePath).size
   }
 
   public static getFileExt(filePath: string) {

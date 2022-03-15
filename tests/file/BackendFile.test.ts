@@ -6,4 +6,8 @@ describe('Test BackendFile.test.ts', () => {
     const fileExt = BackendFile.getFileExt(__filename)
     assert.equal(fileExt, 'ts')
   })
+
+  it(`getFileSize`, async () => {
+    console.info(BackendFile.getFileSize(__filename))
+  })
 })
