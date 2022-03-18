@@ -1,7 +1,7 @@
 export class TemplateHelper {
   public static renderTmpl(tmpl: string, data: { [p: string]: any }) {
     return (tmpl || '').replace(/\{\{\.(.*?)\}\}/g, (_: any, dataKey: string) => {
-      return data[dataKey]
+      return dataKey in data ? data[dataKey] : ''
     })
   }
 
