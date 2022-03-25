@@ -11,18 +11,27 @@ export class RequestFollower implements RequestObserverV2 {
   public readonly logger: Logger
   public readonly requestId: string
 
+  public useLogger = true
+
   constructor(requestId?: string) {
     this.requestId = requestId || makeUUID()
     const logger = log4js.getLogger()
     logger.addContext('reqid', this.requestId)
+    logger.level = 'none'
     this.logger = logger
+  }
+
+  private writeLog(message: any, ...args: any[]) {
+    if (this.useLogger) {
+      this.logger.info(message, ...args)
+    }
   }
 
   onRequestStart(client: AxiosBuilder) {
     const commonApi = client.commonApi
     const url = client.getRequestUrl()
     const homeName = client.getHostname()
-    this.logger.info(`[Start] 200 0 "${commonApi.method} ${url} ${homeName}"`)
+    this.writeLog(`[Start] 200 0 "${commonApi.method} ${url} ${homeName}"`)
   }
 
   onRequestSuccess(client: AxiosBuilder) {
@@ -30,7 +39,7 @@ export class RequestFollower implements RequestObserverV2 {
     const url = client.getRequestUrl()
     const homeName = client.getHostname()
     const duration = client.getDuration() / 1000
-    this.logger.info(`[Completed] 200 ${duration} "${commonApi.method} ${url} ${homeName}"`)
+    this.writeLog(`[Completed] 200 ${duration} "${commonApi.method} ${url} ${homeName}"`)
   }
 
   onRequestFailure(client: AxiosBuilder, error: AppError) {
@@ -53,7 +62,7 @@ export class RequestFollower implements RequestObserverV2 {
       `Time: ${moment().format()}`,
     ]
     this.onDisposeErrorMsg(infos.join('\n'), client, error)
-    this.logger.error(`[Completed] ${statusCode} ${duration} "${commonApi.method} ${url} ${homeName} ${errorMsg}"`)
+    this.writeLog(`[Completed] ${statusCode} ${duration} "${commonApi.method} ${url} ${homeName} ${errorMsg}"`)
   }
 
   onDisposeErrorMsg(_errMsg: string, _client: AxiosBuilder, _error: AppError) {}
