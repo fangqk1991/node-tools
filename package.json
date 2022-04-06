@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/tools",
-  "version": "1.15.2",
+  "version": "1.16.0",
   "description": "Some tools.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
