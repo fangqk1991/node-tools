@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/tools",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "Some tools.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -43,7 +43,9 @@
     "fc-sql": "^0.24.1",
     "sequelize": "^5.21.2",
     "cron": "^1.8.2",
-    "@types/cron": "^1.7.2"
+    "@types/cron": "^1.7.2",
+    "tunnel": "^0.0.6",
+    "@types/tunnel": "^0.0.2"
   },
   "prettier": {
     "arrowParens": "always",

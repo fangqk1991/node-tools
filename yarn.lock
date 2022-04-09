@@ -389,6 +389,13 @@
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
   integrity sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==
 
+"@types/tunnel@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@types/tunnel/-/tunnel-0.0.2.tgz#cec1d20f826dcead25f339338ff190ea8bc7af4e"
+  integrity sha512-2gYBYYPhn3/aozRdfS+DSxFnf3YZ9IM9q6Wjee1xVj/vtRm1MwT9EN9yFSiQW05eAVRLkWJj3qpMAhIA6EY9mw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/validator@^13.7.1":
   version "13.7.1"
   resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.7.1.tgz#cdab1b4779f6b1718a08de89d92d2603b71950cb"
@@ -3763,6 +3770,11 @@ tsutils@^3.17.1:
   integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
+
+tunnel@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
+  integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
 
 type-check@~0.3.2:
   version "0.3.2"
