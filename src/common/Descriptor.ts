@@ -27,11 +27,13 @@ export interface I18nData {
 }
 
 export class Descriptor<T = any> {
+  public static globalLanguage: () => I18nLanguage = () => I18nLanguage.en
+
   public values: T[]
   private readonly _codeMap: any
   private readonly _nameMap: any
   public i18nData: I18nData = {}
-  public defaultLanguage: I18nLanguage = I18nLanguage.en
+  public defaultLanguage?: I18nLanguage
 
   constructor(values: T[], describeFunc: Function) {
     this.values = values
@@ -47,9 +49,11 @@ export class Descriptor<T = any> {
     this._nameMap = nameMap
   }
 
-  public setI18nData(data: I18nData, defaultLanguage = I18nLanguage.en) {
+  public setI18nData(data: I18nData, defaultLanguage?: I18nLanguage) {
     this.i18nData = data
-    this.defaultLanguage = defaultLanguage
+    if (defaultLanguage) {
+      this.defaultLanguage = defaultLanguage
+    }
     return this
   }
 
@@ -63,7 +67,7 @@ export class Descriptor<T = any> {
 
   public describe(code: any, language?: I18nLanguage) {
     const label = this._codeMap[code] || ''
-    language = language || this.defaultLanguage
+    language = language || this.defaultLanguage || Descriptor.globalLanguage()
     if (this.i18nData[label] && this.i18nData[label][language]) {
       return this.i18nData[label][language]
     }
