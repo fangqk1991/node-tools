@@ -1,7 +1,7 @@
 export class TemplateHelper {
-  public static renderTmpl(tmpl: string, data: { [p: string]: any }) {
+  public static renderTmpl(tmpl: string, data: { [p: string]: any }, renderUndefinedProps = true) {
     return (tmpl || '').replace(/\{\{\.(.*?)\}\}/g, (_: any, dataKey: string) => {
-      return dataKey in data ? data[dataKey] : ''
+      return dataKey in data ? data[dataKey] : renderUndefinedProps ? '' : `{{.${dataKey}}}`
     })
   }
 
@@ -15,9 +15,9 @@ export class TemplateHelper {
     return [...new Set(keys)]
   }
 
-  public static renderRetainedVariables(tmpl: string, data: { [p: string]: any }) {
+  public static renderRetainedVariables(tmpl: string, data: { [p: string]: any }, renderUndefinedProps = true) {
     return (tmpl || '').replace(/\{\{(__.*?__)\}\}/g, (_: any, dataKey: string) => {
-      return data[dataKey]
+      return dataKey in data ? data[dataKey] : renderUndefinedProps ? '' : `{{${dataKey}}}`
     })
   }
 
