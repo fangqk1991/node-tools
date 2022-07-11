@@ -25,10 +25,11 @@ export class OAuthClient extends ServiceProxy<OAuthClientConfig> {
     const request = this.makeRequest({
       method: 'GET',
       route: this._config.logoutPath,
-      description: '获取 OAuth 授权 Uri 地址',
+      description: 'Logout',
     })
+    const paramKey = this._config.logoutParamKey || 'redirect_uri'
     const params: any = {
-      redirect_uri: redirectUri,
+      [paramKey]: redirectUri,
     }
     request.setQueryParams(params)
     return request.getRequestUrl()

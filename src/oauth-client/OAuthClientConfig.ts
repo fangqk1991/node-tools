@@ -12,4 +12,6 @@ export interface OAuthClientConfig {
    * 授权范围
    */
   scope?: string
+
+  logoutParamKey?: string
 }
