@@ -43,13 +43,13 @@ export class SearchBuilder {
    */
   public addBuilderAND(builder: SearchBuilder) {
     const { conditions, values } = builder.buildConditionsAndValues()
-    this.addCondition(conditions.join(' AND '), ...values)
+    this._addCondition(conditions.join(' AND '), values)
     return this
   }
 
   public pickBuilder(builder: SearchBuilder) {
     const { conditions, values } = builder.buildConditionsAndValues()
-    this.addCondition(conditions.join(` ${builder.logic()} `), ...values)
+    this._addCondition(conditions.join(` ${builder.logic()} `), values)
     return this
   }
 
@@ -65,37 +65,37 @@ export class SearchBuilder {
     if (/^\w+$/.test(key)) {
       key = `\`${key}\``
     }
-    this.addCondition(`(${key} = ?)`, [value])
+    this._addCondition(`(${key} = ?)`, [value])
     return this
   }
 
   public addConditionKeyInArray(key: string, values: (string | number)[]) {
     if (values.length === 0) {
-      this.addCondition('1 = 0')
+      this._addCondition('1 = 0')
       return this
     }
     const quotes = Array(values.length).fill('?').join(', ')
     if (/^\w+$/.test(key)) {
       key = `\`${key}\``
     }
-    this.addCondition(`${key} IN (${quotes})`, values)
+    this._addCondition(`${key} IN (${quotes})`, values)
     return this
   }
 
   public addConditionKeyNotInArray(key: string, values: (string | number)[]) {
     if (values.length === 0) {
-      this.addCondition('1 = 1')
+      this._addCondition('1 = 1')
       return this
     }
     const quotes = Array(values.length).fill('?').join(', ')
     if (/^\w+$/.test(key)) {
       key = `\`${key}\``
     }
-    this.addCondition(`${key} NOT IN (${quotes})`, values)
+    this._addCondition(`${key} NOT IN (${quotes})`, values)
     return this
   }
 
-  public addCondition(condition: string, ...args: any[]) {
+  private _addCondition(condition: string, args: any[] = []) {
     this._conditions.push({
       entity: `(${condition})`,
       args: args,
@@ -104,6 +104,10 @@ export class SearchBuilder {
     if (this._forSorting) {
       this.addOrderRule(`IF(${condition}, 1, 0)`, 'DESC', ...args)
     }
+  }
+
+  public addCondition(condition: string, ...args: any[]) {
+    this._addCondition(condition, args)
   }
 
   addOrderRule(sortKey: string, direction: OrderDirection = 'ASC', ...args: (string | number)[]) {
