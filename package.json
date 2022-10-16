@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/tools",
-  "version": "1.21.1",
+  "version": "1.22.0",
   "description": "Some tools.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -45,7 +45,9 @@
     "cron": "^1.8.2",
     "@types/cron": "^1.7.2",
     "tunnel": "^0.0.6",
-    "@types/tunnel": "^0.0.2"
+    "@types/tunnel": "^0.0.2",
+    "ioredis": "^4.19.2",
+    "@types/ioredis": "^4.14.7"
   },
   "prettier": {
     "arrowParens": "always",
